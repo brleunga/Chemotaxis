@@ -1,16 +1,16 @@
 Bacteria[] army;
+boolean MouseIsPressed = false;
  void setup()   
  {  
     size(500,500); 
-    int myRandom = 10;
- 	army = new Bacteria[myRandom]; 
+ 	army = new Bacteria[1000]; 
  	for (int i = 0; i < army.length; i++)
  	{
  		army[i] = new Bacteria();
  	} 
  }   
  void draw()   
- {  
+ {   
  	background(0);
  	for (int i = 0; i < army.length; i++)
     {
@@ -18,7 +18,7 @@ Bacteria[] army;
     	army[i].show();
     }
  }  
- class Bacteria    
+class Bacteria    
  {  
     int myX,myY,myColor;
     Bacteria()
@@ -33,7 +33,8 @@ Bacteria[] army;
     }
     void show ()
     {
-    	fill(myColor);
-    	ellipse(myX,myY,15,25);
+    	noStroke();
+    	fill(myColor,125);
+    	quad(myX,myY,myX+15,myY+15,myX,myY+30,myX-15,myY+15);
     }
  }    
