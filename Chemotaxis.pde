@@ -16,25 +16,53 @@ boolean MouseIsPressed = false;
     {
     	army[i].walk();
     	army[i].show();
+    	army[i].alteredWalk();
     }
+    get(mouseX,mouseY);
  }  
 class Bacteria    
  {  
-    int myX,myY,myColor;
+    int myColor,randomX,randomY;
     Bacteria()
     {
-    	myX = myY = 250;
+    	randomX = randomY = 250;
     	myColor = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
+    	/*
+    	randomX = (int)(Math.random()*500);
+    	randomY = (int)(Math.random()*500);
+    	*/
     }
     void walk ()
     {
-        myX = myX + (int)(Math.random()*7)-3;
-        myY = myY + (int)(Math.random()*7)-3;
+        randomX = randomX + (int)(Math.random()*7)-3;
+        //(-3,-2,-1,0,1,2,3)
+        randomY = randomY + (int)(Math.random()*7)-3;
     }
     void show ()
     {
     	noStroke();
     	fill(myColor,125);
-    	quad(myX,myY,myX+15,myY+15,myX,myY+30,myX-15,myY+15);
+    	quad(randomX,randomY,randomX+7,randomY+7,randomX,randomY+14,randomX-7,randomY+7);
+    }
+    void alteredWalk()
+    {
+    	if (mouseX > randomX)
+    	{
+    		randomX = randomX + (int)(Math.random()*6)-1;
+    		//(-2,-1,0,1,2,3)
+    	}
+    	if (mouseX < randomX)
+    	{
+    		randomX = randomX + (int)(Math.random()*6)-4;
+    		//(-4,-3,-2,-1,0,1)
+    	}   
+    	if (mouseY > randomY) 
+    	{
+            randomY = randomY + (int)(Math.random()*6)-1;
+    	}
+    	if (mouseY < randomY)
+    	{
+    		randomY = randomY + (int)(Math.random()*6)-4;
+    	}
     }
  }    
